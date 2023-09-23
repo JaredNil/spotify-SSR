@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 
 import { User } from '@supabase/auth-helpers-nextjs'
 import {
@@ -81,3 +81,13 @@ export const MyUserContextProvider = ((props: Props) => {
 
 	return <UserContext.Provider value={value} {...props} />
 })
+
+
+export const useUser = () => {
+	const context = useContext(UserContext)
+	if (context === undefined) {
+		throw new Error('useUser must be ysed within a MyUserContextProvieder here')
+	}
+
+	return context
+}
