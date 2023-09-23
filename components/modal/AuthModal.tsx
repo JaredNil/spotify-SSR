@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -18,6 +20,14 @@ const AuthModal = () => {
 	const { session } = useSessionContext()
 
 	const { onClose, isOpen } = useAuthModal()
+
+	useEffect(() => {
+		if (session) {
+			router.refresh()
+			onClose()
+		}
+	}, [session, router, onClose])
+
 
 	const onChange = (open: boolean) => {
 		if (!open) onClose()
