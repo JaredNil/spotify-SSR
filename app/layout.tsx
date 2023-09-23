@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import SupabaseProvider from '@/providers/SupabaseProvider'
 
 import Sidebar from '@/components/Sidebar'
 
@@ -24,9 +25,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={font.className}>
-				<Sidebar>
-					{children}
-				</Sidebar >
+				<SupabaseProvider>
+					<Sidebar>
+						{children}
+					</Sidebar >
+				</SupabaseProvider>
 			</body>
 		</html>
 	)
