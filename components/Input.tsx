@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge';
 
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	id: string
-	disabled: boolean
+	id?: string
+	disabled?: boolean
 	placeholder?: string
 }
 
