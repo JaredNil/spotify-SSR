@@ -4,6 +4,8 @@ import SearchContent from "@/app/search/components/SearchContent"
 
 import getSongsByTitle from "@/actions/getSongsByTitle"
 
+export const revalidate = 0
+
 interface SearchProps {
 	searchParams: {
 		title: string

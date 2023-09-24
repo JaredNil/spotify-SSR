@@ -11,16 +11,16 @@ interface ListItemProps {
 	href: string,
 }
 
-
 const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
 
 	const router = useRouter()
 
 	const onClick = () => { router.push(href) }
 
+
 	return (
 		<button
-			onClick={() => { onClick }}
+			onClick={onClick}
 			className="
 				relative group
 				flex items-center
