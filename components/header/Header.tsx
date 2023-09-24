@@ -1,10 +1,9 @@
 "use client"
-// architect
+// architect && hooks
 import { useRouter } from "next/navigation"
 import useAuthModal from "@/hooks/useAuthModal"
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { toast } from "react-hot-toast";
-// hooks
 import { useUser } from "@/hooks/useUser";
 // comp
 import Button from "@/components/header/Button"
