@@ -7,6 +7,7 @@ import ToasterProvider from '@/providers/ToasterProvider'
 
 import Sidebar from '@/components/Sidebar'
 
+import getSongsByUserID from '@/actions/getSongsByUserID'
 
 import './globals.css'
 import { Figtree } from 'next/font/google'
@@ -20,11 +21,16 @@ export const metadata: Metadata = {
 	description: 'Spotify SSR application',
 }
 
-export default function RootLayout({
+export const revalidate = 0
+
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
+
+	const userSongs = await getSongsByUserID()
+
 	return (
 		<html lang="en">
 			<body className={font.className}>
@@ -32,7 +38,7 @@ export default function RootLayout({
 				<SupabaseProvider>
 					<UserProvider>
 						<ModalProvider />
-						<Sidebar>
+						<Sidebar songs={userSongs}>
 							{children}
 						</Sidebar >
 					</UserProvider>

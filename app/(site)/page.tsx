@@ -1,8 +1,16 @@
+
 import Header from "@/components/header/Header"
 import ListItem from "@/components/ListItem"
+import PageContent from '@/app/(site)/components/PageContent'
 
+import getSongs from "@/actions/getSongs"
 
-const Home = () => {
+export const revalidate = 0
+
+const Home = async () => {
+
+	const songs = await getSongs()
+
 	return (
 		<div className="
 				bg-neutral-900 
@@ -44,10 +52,9 @@ const Home = () => {
 						Newest songs
 					</h1>
 				</div>
-				<div className="">
-					List of songs
-				</div>
+				<PageContent songs={songs} />
 			</div>
+
 
 		</div>
 	)
